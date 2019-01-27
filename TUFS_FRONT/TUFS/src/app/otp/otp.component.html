@@ -1,0 +1,13 @@
+<div class="BoxForm">
+  <div class="jumbotron">
+    <form [formGroup]="form_otp" 
+    (ngSubmit)="GenerateOTP(form.value)">
+        <div class="example-container">
+        <mat-form-field>
+        <input matInput placeholder="Phone Number" formControlName="number">
+        </mat-form-field>
+      </div>
+  </form>
+  </div>
+  </div>
+

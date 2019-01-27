@@ -1,0 +1,41 @@
+<form [formGroup]="laptopForm" autocomplete="off">
+  <mat-card>
+    <mat-card-content>
+      <div class="container">
+        <div class="row">
+          <div style="margin-left: 20%;">
+            <mat-form-field appearance="outline">
+              <mat-label>Select Laptop Brand</mat-label>
+              <input type="text" matInput placeholder="Select Laptop Brand" formControlName="fclaptop"
+                [matAutocomplete]="autoBrands">
+              <mat-autocomplete #autoBrands="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+
+            </mat-form-field>
+          </div>
+          <div style="margin-left: 20%;">
+            <mat-form-field appearance="fill">
+              <mat-label>Issues</mat-label>
+              <mat-select placeholder="Issues" formControlName="fcdevice" multiple>
+                <!-- <mat-option *ngFor="let device of Devices" [value]="device">
+                                    {{device.device_name}}
+                                </mat-option> -->
+                <mat-option value="D">Screen broken</mat-option>
+                <mat-option value="E">HardDisk crashed</mat-option>
+                <mat-option value="F">Keys not working</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <button type="button" style="margin-left: 90%;" class="btn btn-success"  (click)="OnLtSubmit()" >Submit</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+
+
+</form>

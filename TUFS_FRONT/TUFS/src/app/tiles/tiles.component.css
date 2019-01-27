@@ -1,0 +1,27 @@
+.button {
+    padding: 60px 60px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgb(65, 88, 66);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+    margin-left: 50%;
+    margin-top: 100px;
+  }
+  
+  .button:hover {background-color: #5175e9}
+
+  .button:active {
+    background-color: #d1ae39;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  .repair-body{
+
+    background-image: linear-gradient( rgb(216, 206, 206), #181846);
+
+}

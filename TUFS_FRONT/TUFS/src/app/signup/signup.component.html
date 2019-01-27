@@ -1,0 +1,74 @@
+
+<!---->
+<header>
+  
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
+
+</header>
+<!---->
+
+     <div class="BoxForm">
+        <h1>Sign Up</h1>
+
+          <div class="jumbotron">
+          <form id="form_signup"
+          
+          [formGroup]="form"
+          (ngSubmit)="onSubmit(form.value)">
+          <div class="example-container">
+             <mat-form-field>
+              
+              <input matInput placeholder="Name" formControlName="name">
+              <div *ngIf="form.get('name').hasError('pattern')">
+                Provide Valid Name
+              </div>
+            </mat-form-field>
+            <mat-form-field>
+            <input  matInput placeholder="Email"formControlName="email">
+            <div *ngIf="form.get('email').hasError('pattern')">
+              Provide Valid Email Address
+            </div>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <input matInput placeholder="Password" formControlName="password">
+            <div *ngIf="form.get('password').hasError('pattern')">
+              Password Must Contain one Caps and a Numeric Character
+            </div>
+          </mat-form-field>
+          
+           
+          <mat-form-field>
+            <input matInput placeholder="Confirm Password"formControlName="confirm_password">
+            <div *ngIf="form.get('confirm_password').hasError('pattern')">
+              Does not match
+            </div>
+            </mat-form-field>
+          </div>
+          <button type="submit" class="button4">Sign Up</button>
+          
+          </form>
+          
+          
+          </div>
+          <div class="container">
+          <div class="sociallogin">
+            <div class="row">
+                <div class="col-sm">
+              <button type="button" (click)="socialSignIn('facebook')" class="button1" >Facebook</button>
+              </div>
+              <div class="col-sm">
+              <button type="button" (click)="socialSignIn('google')" class="button2">Google</button>
+            </div>
+            <div class="col-sm">
+          <button type="button" class="button3" (click)="otp()">OTP Signup</button> 
+        </div>
+
+        </div>
+      </div>
+              </div>
+          
+   
+
