@@ -11,6 +11,8 @@ import { otpV } from './otp/otpV';
 import { Model } from './repairs/model'
 import { order } from './order/order'
 import { BehaviorSubject } from 'rxjs';
+//import { issue } from './issues/issue'
+
 
 const endpoint = 'http://localhost:8000/'
     const httpOptions = {
@@ -24,6 +26,11 @@ const endpoint = 'http://localhost:8000/'
 export class RestService {
   
 session:Object;
+public choice={
+  model:String,
+  issue:String,
+  price:String
+}
   constructor(private http: HttpClient) 
     {
       
@@ -35,16 +42,16 @@ Signup(user:User): Observable<User> {
 
 
 
-Login(user:UserL):Observable<UserL>{
-  return this.http.post<UserL>(endpoint+'login',user,httpOptions)
+Login(user:any):Observable<any>{
+  return this.http.post<any>(endpoint+'login',user,httpOptions)
 }
 
-SendOtp(otp:otp):Observable<otp>{
-  return this.http.post<otp>(endpoint+'send_otp',otp,httpOptions)
+SendOtp(otp:any):Observable<any>{
+  return this.http.post<any>(endpoint+'send_otp',otp,httpOptions)
 }
 
-VerifyOtp(otp:otpV):Observable<otpV>{
-  return this.http.post<otpV>(endpoint+'verify_otp',otp,httpOptions)
+VerifyOtp(otp:any):Observable<any>{
+  return this.http.post<any>(endpoint+'verify_otp',otp,httpOptions)
 }
 
 GetModels(model:Model):Observable<Model>{
@@ -55,6 +62,11 @@ PlaceOrder(order:order):Observable<order>{
   return this.http.post<order>(endpoint+'orders',order,httpOptions)
 }
 
+GetIssues(issue:any):Observable<any>{
+  return this.http.post<any>(endpoint+'models',issue,httpOptions)
+}
+
+
 GetSession(){
   return this.session
 }
@@ -64,6 +76,22 @@ SetSession(data:any){
 this.session=data
 }
 
+Setchoice(data:any){
+//  if(type=="model"){
+//    this.choice["model"]=data;
+//  }
+ // else if(type=="issue"){
+  //  this.choice["issue"]=data;
+ // }
+ // else{
+  //  this.choice["price"]=data
+ // }
+ this.choice=data;
+}
+
+Getchoice(){
+  return this.choice;
+}
 }
 
 

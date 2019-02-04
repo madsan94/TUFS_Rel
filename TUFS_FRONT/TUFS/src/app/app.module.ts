@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider} from "angular-6-social-login";
 //import {MatFormFieldModule} from '@angular/material/form-field';
+import { GrdFilterPipe } from './grd-filter.pipe';
 
 
 
@@ -41,6 +42,10 @@ import { OtpComponent } from './otp/otp.component';
 import { TabviewComponent } from './tabview/tabview.component';
 import { SignupComponent } from './signup/signup.component';
 import { OrderComponent } from './order/order.component';
+import { IssuesComponent } from './issues/issues.component';
+import { ModelsShowComponent } from './models-show/models-show.component';
+import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 //Config
 export function getAuthServiceConfigs(){
@@ -59,7 +64,7 @@ export function getAuthServiceConfigs(){
   return config;
 }
 
-
+entryComponents:[];
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +76,12 @@ export function getAuthServiceConfigs(){
     OtpComponent,
     TabviewComponent,
     SignupComponent,
-    OrderComponent
+    OrderComponent,
+    IssuesComponent,
+    ModelsShowComponent,
+    GrdFilterPipe,
+    ConfirmOrderComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

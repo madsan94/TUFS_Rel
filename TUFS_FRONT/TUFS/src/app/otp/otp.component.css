@@ -33,19 +33,20 @@ ul{
     width: 100%;
   }
 
-  .mat-raised-button {
-    width: 150px;
-    height: 40px;
-    line-height: 30px;
-    min-height: 20px;
-    vertical-align: top;
-    font-size: 15px;
-    padding: 0 0;
-    margin: 0;
-    position:relative;
-    
-}
 
-.button{
-    text-align: center;
-}
+
+.button1 {
+    width: 130px;
+    height: 40px;
+    color:#ffffff;
+    line-height: 20px;
+    padding-bottom: 2px;
+    vertical-align: middle;
+    font-family: "Lucida Grande", Geneva, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #333;
+    border: 1px solid transparent;
+    opacity:0.6;
+    border-radius:2px;
+    box-shadow: 1px 2px #888888;
+  }

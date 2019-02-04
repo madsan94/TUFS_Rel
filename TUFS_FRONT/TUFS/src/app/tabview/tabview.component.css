@@ -1,0 +1,44 @@
+
+ul
+{ 
+overflow-x:hidden;
+white-space:nowrap; 
+height: 2.5em;
+width: 20%;
+text-align:right;
+} 
+
+li
+{ 
+display:inline;
+text-align: center;
+}
+
+
+
+nav {
+    background-color: #fff;
+    border: 1px solid #dedede;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px -1px rgba(116, 111, 134, 0.055);
+    color: #888;
+    display: block;
+    /* margin: 8px 22px 8px 22px; */
+    /* overflow: hidden; */
+    /* width: 100%; */ 
+    margin: 0;
+    padding: 0;
+    height:90px;
+    /* notice below: */
+    position: fixed;
+    left: 0;
+    right: 0;
+    top:5px;
+}
+
+
+ 
+
+
+
+

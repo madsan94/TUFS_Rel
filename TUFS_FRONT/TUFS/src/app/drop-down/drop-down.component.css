@@ -1,9 +1,16 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
+.button1 {
+  width: 130px;
+  height: 40px;
+  color:#ffffff;
+  line-height: 20px;
+  padding-bottom: 2px;
+  vertical-align: middle;
+  font-family: "Lucida Grande", Geneva, Verdana, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background-color: #3b5998;
+  border: 1px solid transparent;
+  opacity:0.6;
+  border-radius:2px;
+  box-shadow: 1px 2px #888888;
   
-  .example-full-width {
-    width: 100%;
-  }
+}

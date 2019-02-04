@@ -1,0 +1,66 @@
+<div class ="container">
+<input [(ngModel)]="searchText" placeholder="Search.." class="advancedSearchTextbox">
+<div class="search"></div>
+</div>
+
+
+
+<div class="Issues" [hidden]="!flag">
+    <mat-tab-group>
+    <mat-tab label="Phone Issues">
+    
+        <ng-template matTabContent>
+          
+    <div id="container" [@listAnimation]="items.length">
+    
+        
+        <div id="list" *ngFor="let item of items | grdFilter:{issue:searchText || ''} let i=index" (click)="ShowModels(i)"                           >
+          
+          
+          {{ item.issue }}
+    
+        </div>
+    
+      </div>
+    
+    </ng-template>
+      </mat-tab>
+    
+      <mat-tab label="Laptop Issues">
+          <ng-template matTabContent>
+          <div id="container" [@listAnimation]="items.length">
+    
+        
+              <div id="list" *ngFor="let item of items |  grdFilter:{issue:searchText} let i=index" (click)="ShowModels(i)">
+                
+                {{ item.issue }}
+              
+              </div>
+          
+            </div> 
+          </ng-template>      
+      </mat-tab>
+    </mat-tab-group>
+    </div>
+
+
+<div class="models" [hidden]="!flag_model">
+
+      
+    <div id="container" [@listAnimation]="items.length">
+    
+        
+        <div id="list" *ngFor="let item of items_m; let i=index" (click)="ShowPrice(i)">
+          
+          
+          {{ item.model }}
+    
+        </div>
+    
+      </div>
+    
+    
+  </div>
+
+
+

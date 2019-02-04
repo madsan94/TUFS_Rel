@@ -46,6 +46,13 @@
               Does not match
             </div>
             </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Role"formControlName="role">
+                <div *ngIf="form.get('role').hasError('pattern')">
+                  Does not match
+                </div>
+                </mat-form-field>
+    
           </div>
           <button type="submit" class="button4">Sign Up</button>
           

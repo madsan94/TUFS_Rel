@@ -1,0 +1,31 @@
+.button1 {
+    width: 130px;
+    height: 40px;
+    color:#ffffff;
+    line-height: 20px;
+    padding-bottom: 2px;
+    vertical-align: middle;
+    font-family: "Lucida Grande", Geneva, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #7300e6;
+    border: 1px solid transparent;
+    opacity:0.6;
+    border-radius:2px;
+    box-shadow: 1px 2px #888888;
+    left:50;
+    right:50;
+}
+
+.button1:hover{
+    opacity:1
+}
+
+
+  .price{
+    box-shadow: 1px 3px #888888;
+    border-radius: 25px;
+    border: 1px solid;
+    padding:20px;
+    width:500px;
+  
+  }

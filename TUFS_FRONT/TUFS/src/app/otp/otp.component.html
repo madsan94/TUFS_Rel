@@ -1,13 +1,29 @@
-<div class="BoxForm">
+<div class="BoxForm" [hidden]="!flag">
   <div class="jumbotron">
-    <form [formGroup]="form_otp" 
+    <form [formGroup]="form" 
     (ngSubmit)="GenerateOTP(form.value)">
         <div class="example-container">
         <mat-form-field>
         <input matInput placeholder="Phone Number" formControlName="number">
         </mat-form-field>
       </div>
+      <button type="submit" class="button1">Generate OTP</button>
+
   </form>
   </div>
   </div>
 
+  <div class="BoxForm" [hidden]="flag">
+      <div class="jumbotron">
+        <form [formGroup]="form_otp" 
+        (ngSubmit)="VerifyOTP(form_otp.value)">
+            <div class="example-container">
+            <mat-form-field>
+            <input matInput placeholder="Enter OTP" formControlName="otp">
+            </mat-form-field>
+          </div>
+          <button type="submit" class="button1">Verify OTP</button>
+    
+      </form>
+      </div>
+      </div>

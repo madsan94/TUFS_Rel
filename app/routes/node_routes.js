@@ -75,11 +75,12 @@ app.get('/', (req, res)=> {
 						res.json(err)
 					}
 					else{
+						
 						Response['flag']='s';
 						Response['message']="Got the Devices and Issues";
 						Response['session']=sess;
-						Response['models']=model_data;
-						Response['issues']=issue_data;
+						Response['models']=model_data[0].model;
+						Response['issues']=issue_data[0];
 						res.send(Response);
 						console.log("yeah");
 						
@@ -95,6 +96,8 @@ app.get('/', (req, res)=> {
 		res.send(Response)
 	}
 	});
+
+	
 //===========================================================================================	
 //Forget password
 app.post('/change_password',(req,res)=>{
@@ -144,6 +147,7 @@ app.post('/signup', (req, res) => {
 					var sess=req.session
 					sess.email=req.body.email
 					sess.name=req.body.name
+					sess.role=req.body.role
 						console.log(sess.email)
 						Response["session"]=sess
 						Response['flag']='s'
@@ -159,6 +163,7 @@ app.post('/send_otp',(req,res)=>{
 	refreshJson()
 	var otp=GenerateOtp()
 	mobile_number=req.body.number
+	console.log(mobile_number)
 	//var otp=new otp(otp_data) 
 	
 	sendOtp.send(mobile_number,otp, function (error, data) {
@@ -185,11 +190,13 @@ app.post('/verify_otp',(req,res)=>{
 		{
 			Response['flag']='s'
 			Response['message']="User Verified Successfully"
+			res.send(Response)
 		}
 		if(data.type == 'error')
 		{
 			Response['flag']='f'
 			Response['message']="User Not Verified"
+			res.send(Response)
 		}
 	  });
 	})
@@ -239,7 +246,7 @@ app.post('/login',(req,res)=>{
 
 
 //Takes an Order and Place and Order
-//Request Params:{type,device,price,issue}-> while Posting 
+//Request Params:{type,device,model,price,issue}-> while Posting 
 //Request Params:{status:O/P/D} as per Ordered,Pending(assigned to staff),Done
 //Can Request by Filters-> extra flexibiity for sorting 		
 app.post('/orders',(req,res)=>{
@@ -247,19 +254,34 @@ app.post('/orders',(req,res)=>{
 		console.log(req.body.device)
 		var sess=req.session;
 		//type: POST -> Post a Order
-		type=req.body.type
+		//type=req.body.type
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; 
+		var yyyy = today.getFullYear();
+		if(dd<10) 
+		{
+    		dd='0'+dd;
+		} 
+
+		if(mm<10) 
+		{
+    		mm='0'+mm;
+		} 
+		today = mm+'-'+dd+'-'+yyyy;
 		Order_type=req.body.device	
 		if(sess){
-		order_number=uniqid()
+		order_number=Math.floor(100000 + Math.random() * 90000000)
 		var order_data={
 			Order_Number:order_number,
 			User_Id:sess.email,
-			Creation_Date:str(date.format(now, 'YYYY/MM/DD')),
+			Creation_Date:today.toString(),
 			Status:'O',
 			Assigned:"",
 			Price:req.body.price,
-			Issue:req.body.issue
-			
+			Issue:req.body.issue,
+			model:req.body.model,
+			device:req.body.device
 		}	
 		var order = new Order(order_data);
 		order.save(function(error, data){
@@ -285,19 +307,22 @@ app.post('/orders',(req,res)=>{
 		
 			});
 			
-app.get('/orders',(req,res)=>{
+app.get('/get_orders',(req,res)=>{
 	refreshJson()
 	var sess=req.session;
 	var role=sess.role;
+	console.log(role)
 	if(sess){
 	if(role=='admin'){
-		Order.find({}).toArray(function(err,data){
+		console.log("GOT IN")
+		Order.find({},(function(err,data){
 			if(err){
 				Response['flag']='f'
 				Response['message']="ERROR"
 				res.send(Response)
 			}
 			else{
+				console.log("GOT IN")
 				if(data.length==0){
 					Response['flag']='f'
 					Response['message']="No Orders Found"
@@ -311,6 +336,7 @@ app.get('/orders',(req,res)=>{
 				}
 			}
 		})
+	)
 	}
 	else if(role=='customer'){
 		customer=sess.email

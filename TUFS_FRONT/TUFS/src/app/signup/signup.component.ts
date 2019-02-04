@@ -30,7 +30,8 @@ this.form=new FormGroup({
     //Validators.pattern('[?=.*[A-Z]]')
     //Validators.pattern('(?=.*[0-9])')
   ])),
-  confirm_password: new FormControl('')
+  confirm_password: new FormControl(''),
+  role:new FormControl('')
   });
   }
 
@@ -38,9 +39,10 @@ onSubmit(signup_details){
   const NewUser: User = { "email":signup_details.email,"password":signup_details.password } as User;
   this.restservice.Signup(NewUser).subscribe(response =>{ 
     if(response.flag=='s'){
-      this.router.navigateByUrl('/tiles')
+      localStorage.setItem('session',JSON.stringify(response.session))
+      this.router.navigateByUrl('/order')
      // console.log(response.session)
-      this.restservice.SetSession(response.session)
+      // sessionStorage.setItem('session',response.session)
     }
     else{
       console.log(response.message)

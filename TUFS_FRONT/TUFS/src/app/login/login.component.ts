@@ -37,9 +37,17 @@ this.form=new FormGroup({
   }
 
 onSubmit(signup_details){
-  const NewUser: UserL = { "name":signup_details.name,"email":signup_details.email,"password":signup_details.password } as UserL;
-  this.restservice.Login(NewUser).subscribe(response => console.log(response))
-  //this.router.navigateByUrl('/tiles')
+  const NewUser: any = { "email":signup_details.email,"password":signup_details.password }; 
+  this.restservice.Login(NewUser).subscribe(response =>{
+if(response.flag=='s'){
+    alert("Login Successful")
+    localStorage.setItem('session',JSON.stringify(response.session))
+    this.router.navigateByUrl('/confirm_order')
+}
+else{
+  alert("Wrong Login Details");
+}
+  })   //this.router.navigateByUrl('/tiles')
 }
 
 public socialSignIn(socialPlatform : string) {
@@ -63,5 +71,10 @@ public socialSignIn(socialPlatform : string) {
 
 public otp(){
   this.router.navigateByUrl('/otp')
+}
+
+public signup(){
+  this.router.navigateByUrl('/signup')
+
 }
 }

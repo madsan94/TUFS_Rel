@@ -15,7 +15,8 @@ values_laptop=df['LAPTOP_ISSUE'].values
 mobile_I=[]
 laptop_I=[]
 for i in values_mobile:
-    mobile_I.append(i)
+    if(i!=0):    
+        mobile_I.append(i)
 for i in values_laptop:
     if(i!=0):
         laptop_I.append(i)

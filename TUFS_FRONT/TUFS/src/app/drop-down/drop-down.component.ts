@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
+import { Router} from '@angular/router'
 
 @Component({
   selector: 'app-drop-down',
@@ -9,10 +9,13 @@ import { FormControl } from '@angular/forms';
 })
 export class DropDownComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
+    localStorage.removeItem('session');
+    alert("You have Logged Out")
   }
-  myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
+ onSubmit(){
+this.router.navigateByUrl('issue')
+ }
 }
